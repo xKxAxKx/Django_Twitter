@@ -23,5 +23,3 @@ if __name__ == "__main__":
             )
         raise
     execute_from_command_line(sys.argv)
-
-GRANT ALL PRIVILEGES ON django_twitter.* TO app1_user@localhost IDENTIFIED BY 'app1_passwd';
