@@ -131,6 +131,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+#ログイン時にアクセスするページ
+LOGIN_URL = "/accounts/login"
+
+
 #ログイン時にリダイレクトするURLの指定
 LOGIN_REDIRECT_URL = '/twitter/'
 
@@ -139,6 +143,7 @@ LOGIN_REDIRECT_URL = '/twitter/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR, "django_twitter/../django_twitter/static"),
 )
+
 
 # DebugToolbar
 DEBUG_TOOLBAR_CONFIG = {

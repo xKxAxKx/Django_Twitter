@@ -1,5 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def index(request):
-    return HttpResponse('ここがtweetの一覧')
+    tweet = "tweetです"
+    return render(request,
+        'twitter/index.html',
+        {'tweet' : tweet}
+    )
