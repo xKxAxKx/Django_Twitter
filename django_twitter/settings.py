@@ -25,6 +25,9 @@ SECRET_KEY = '$ig6r$byimgq3=colh=j%p#77&ep5=^sr(2198x%3sk!2)vhxz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# DebugToolbarを表示する
+INTERNAL_IPS = ('127.0.0.1', '192.168.33.1',)
+
 ALLOWED_HOSTS = ["192.168.33.10"]
 
 # Application definition
@@ -36,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
+    'debug_toolbar',
+    'accounts',
+    'twitter',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'django_twitter.urls'
@@ -121,3 +129,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#ログイン時にリダイレクトするURLの指定
+LOGIN_REDIRECT_URL = '/twitter/'
+
+
+# 静的ファイルを共通で置く
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR, "django_twitter/../django_twitter/static"),
+)
+
+# DebugToolbar
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TEMPLATE_CONTEXT': True,
+}
