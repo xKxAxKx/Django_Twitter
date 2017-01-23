@@ -136,7 +136,7 @@ LOGIN_URL = "/accounts/login/"
 
 
 #ログイン時にリダイレクトするURLの指定
-LOGIN_REDIRECT_URL = 'twitter/'
+LOGIN_REDIRECT_URL = '/twitter/'
 
 
 # 静的ファイルを共通で置く
