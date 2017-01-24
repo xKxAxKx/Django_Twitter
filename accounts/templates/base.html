@@ -16,10 +16,10 @@
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>Twitter</li>
+                    <li><a href="{% url 'twitter:index' %}">Twitter</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>なんかいろいろ</li>
+                    <li><a href="{% url 'accounts:signup' %}">新規登録</a></li>
                 </ul>
             </div>
         </div>
