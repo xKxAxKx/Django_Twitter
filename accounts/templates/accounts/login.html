@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ログイン{% endblock title %}
+{% block title %}Twitterにログイン{% endblock title %}
 
 {% block extrahead %}
 <style>
@@ -23,12 +23,10 @@ table {
 <form method="post" role="form" class="form-horizontal">
     {% csrf_token %}
     <div class="form-group">
-        メールアドレス
-        <input id="id_username" name="username" type="text" value="" maxlength="256" placeholder="Username" autofocus required class="form-control"/>
+        <input id="id_username" name="username" type="text" value="" maxlength="256" placeholder="ユーザ名を入力" class="form-control"/>
     </div>
     <div class="form-group">
-        <input id="id_password" name="password" type="password" value="" maxlength="256" placeholder="Pasword" required
-        class="form-control"/>
+        <input id="id_password" name="password" type="password" value="" maxlength="256" placeholder="パスワードを入力" class="form-control"/>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
     <input name="next" type="hidden" value="{{ next }}"/>

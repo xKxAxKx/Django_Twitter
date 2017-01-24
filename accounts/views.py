@@ -3,11 +3,6 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
-def test(request):
-    return HttpResponse('testです')
-
-
 def signup(request):
     return HttpResponse('User作成')
 

@@ -4,6 +4,10 @@
 
 {% block content %}
 
-    <h3 class="page-header">ログアウトしました</h3>
+<h3 class="page-header">ログアウトしました</h3>
+
+<div>
+  <a href="{% url 'accounts:login' %}">ログイン</a>
+</div>
 
 {% endblock content %}
