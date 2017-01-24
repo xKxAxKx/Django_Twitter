@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^logout/$', logout,
         {'template_name': 'accounts/logged_out.html'},
         name='logout'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^signup_save/$', views.signup_save, name='signup_save'),
 ]
