@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Tweet(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    reply_tweet_id = models.IntegerField(blank=True)
+    reply_tweet_id = models.IntegerField(null=True, blank=True)
     content = models.CharField(max_length=140)
     created_at = models.DateTimeField(default=timezone.now)
 
