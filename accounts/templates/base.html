@@ -19,7 +19,13 @@
                     <li><a href="{% url 'twitter:index' %}">Twitter</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'twitter:index' %}">プロフィール</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">ログアウト</a></li>
+                    {% else %}
+                    <li><a href="{% url 'accounts:login' %}">ログイン</a></li>
                     <li><a href="{% url 'accounts:signup' %}">新規登録</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
