@@ -12,8 +12,13 @@ table {
 
 {% block content %}
 <!-- プロフィール表示部 -->
-<h2>@{{ user.username }}</h2>
-<small>登録日時:{{ user.date_joined }}</small>
+<h2>@{{ get_user.username }}</h2>
+<small>登録日時:{{ get_user.date_joined }}</small>
+{% if get_user.id == user.id %}
+<div style="margin-top:30px;">
+    <a href="{% url 'accounts:edit' user_id=user.id %}">プロフィールを編集する</a>
+<div>
+{% endif %}
 <hr>
 
 <!-- ツイート表示部 -->

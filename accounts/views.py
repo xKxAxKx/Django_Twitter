@@ -29,9 +29,13 @@ def signup_save(request):
 
 @login_required
 def profile(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+    get_user = get_object_or_404(User, pk=user_id)
     tweets = Tweet.objects.filter(user_id_id=user_id).order_by('-id')
-    return render(request, 'accounts/profile.html', dict(user=user, tweets=tweets))
+    return render(request, 'accounts/profile.html', dict(get_user=get_user, tweets=tweets))
+
+@login_required
+def edit(request):
+    pass
 
 @login_required
 def delete(request):

@@ -1,10 +1,16 @@
-{% for tweet in tweets %}
-      <div class="panel panel-primary">
-          <div class="panel-body">
-            @<a href="{% url 'twitter:index' %}">{{ tweet.user_id }}</a>&nbsp;&nbsp;{{ tweet.created_at }}<br>
-            {{ tweet.content }}<br>
-            <a href="{% url 'twitter:index' %}">返信する</a>&nbsp;
-            <a href="{% url 'twitter:twi_delete' tweet_id=tweet.id %}">削除する</a>
+{% if tweets %}
+    {% for tweet in tweets %}
+          <div class="panel panel-primary">
+              <div class="panel-body">
+                @<a href="{% url 'accounts:profile' user_id=tweet.user_id_id %}">{{ tweet.user_id }}</a>&nbsp;&nbsp;{{ tweet.created_at }}<br>
+                {{ tweet.content }}<br>
+                <a href="{% url 'twitter:index' %}">返信する</a>&nbsp;
+                {% if tweet.user_id_id == user.id %}
+                <a href="{% url 'twitter:twi_delete' tweet_id=tweet.id %}">削除する</a>
+                {% endif %}
+              </div>
           </div>
-      </div>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <p>まだ何もありません</p>
+{% endif %}
