@@ -29,13 +29,6 @@ table {
 
 <!-- twitterのつぶやき表示 -->
 <div class="row">
-    {% for tweet in tweets %}
-          <div class="panel panel-primary">
-              <div class="panel-body">
-                @{{ tweet.user_id }}&nbsp;&nbsp;{{ tweet.created_at }}<br>
-                {{ tweet.content }}
-              </div>
-          </div>
-    {% endfor %}
+  {% include "tweet_list.html" %}
 </div>
 {% endblock %}

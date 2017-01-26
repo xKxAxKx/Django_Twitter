@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from twitter.models import Tweet, Favorite
@@ -22,3 +22,10 @@ def index(request):
         'twitter/index.html',
         dict(tweets=tweets, form=form)
     )
+
+
+@login_required
+def twi_delete(request, tweet_id):
+    tweet = get_object_or_404(Tweet, pk=tweet_id)
+    tweet.delete()
+    return redirect('twitter:index')

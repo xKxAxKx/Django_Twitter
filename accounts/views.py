@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from accounts.forms import SignupForm
+from django.contrib.auth.models import User
+from twitter.models import Tweet, Favorite
 
 
 def signup(request):
@@ -24,6 +26,12 @@ def signup_save(request):
     }
     return render(request, 'accounts/signup.html', context)
 
+
+@login_required
+def profile(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    tweets = Tweet.objects.filter(user_id_id=user_id).order_by('-id')
+    return render(request, 'accounts/profile.html', dict(user=user, tweets=tweets))
 
 @login_required
 def delete(request):

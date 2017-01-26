@@ -1,0 +1,10 @@
+{% for tweet in tweets %}
+      <div class="panel panel-primary">
+          <div class="panel-body">
+            @<a href="{% url 'twitter:index' %}">{{ tweet.user_id }}</a>&nbsp;&nbsp;{{ tweet.created_at }}<br>
+            {{ tweet.content }}<br>
+            <a href="{% url 'twitter:index' %}">返信する</a>&nbsp;
+            <a href="{% url 'twitter:twi_delete' tweet_id=tweet.id %}">削除する</a>
+          </div>
+      </div>
+{% endfor %}

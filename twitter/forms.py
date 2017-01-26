@@ -6,4 +6,4 @@ class TweetForm(forms.ModelForm):
     """ツイートのフォーム"""
     class Meta:
         model = Tweet
-        fields = ('content', 'user_id', )
+        fields = ('content', )

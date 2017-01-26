@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}profile{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- プロフィール表示部 -->
+<h2>@{{ user.username }}</h2>
+<small>登録日時:{{ user.date_joined }}</small>
+<hr>
+
+<!-- ツイート表示部 -->
+<h4>ツイート一覧</h4>
+{% include "tweet_list.html" %}
+{% endblock %}
