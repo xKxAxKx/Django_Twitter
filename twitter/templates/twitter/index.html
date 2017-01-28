@@ -13,7 +13,6 @@ table {
 
 {% block content %}
 <!-- twitterのつぶやきフォーム -->
-{{ login_user }}
 <div class="row">
     <form action="{% url 'twitter:index' %}" method="post" class="form-horizontal" role="form">
         {% csrf_token %}

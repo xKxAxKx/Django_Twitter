@@ -17,6 +17,7 @@ def index(request):
             return redirect('twitter:index')
     else:
             form = TweetForm()
+
     tweets = Tweet.objects.select_related().all().order_by('-id')
     return render(request,
         'twitter/index.html',

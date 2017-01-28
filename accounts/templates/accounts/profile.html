@@ -17,7 +17,7 @@ table {
 <small>最終ログイン日時:{{ get_user.last_login }}</small>
 {% if get_user.id == user.id %}
 <div style="margin-top:30px;">
-    プロフィールを編集する
+    <a href="{% url 'accounts:edit' %}">プロフィールを編集する</a>
 <div>
 {% endif %}
 <hr>
