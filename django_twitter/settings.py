@@ -149,3 +149,6 @@ STATICFILES_DIRS=(
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TEMPLATE_CONTEXT': True,
 }
+
+#Flashメッセージの表示
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'

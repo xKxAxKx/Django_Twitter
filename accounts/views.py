@@ -5,6 +5,8 @@ from django.views.decorators.http import require_POST
 from accounts.forms import SignupForm, UserEditForm
 from django.contrib.auth.models import User
 from twitter.models import Tweet, Favorite
+from django.contrib import messages
+
 
 
 def signup(request):
@@ -20,6 +22,7 @@ def signup_save(request):
     form = SignupForm(request.POST)
     if form.is_valid():
         form.save()
+        messages.success(request, 'ユーザを作成しました')
         return redirect('/accounts/login')
     context = {
         'form': form,
@@ -44,7 +47,8 @@ def edit(request):
             user = form.save(commit=False)
             user.id = request.user.id
             user.save()
-            return redirect('twitter:index')
+            messages.success(request, '更新しました！')
+            return redirect('accounts:profile', user_id=login_user.id)
     else:
         form = UserEditForm(instance=login_user)
 
