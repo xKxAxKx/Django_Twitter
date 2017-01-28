@@ -12,11 +12,11 @@ def index(request):
         form = TweetForm(request.POST)
         if form.is_valid():
             tweet = form.save(commit=False)
+            tweet.user_id_id = request.user.id
             tweet.save()
             return redirect('twitter:index')
     else:
-        form = TweetForm()
-
+            form = TweetForm()
     tweets = Tweet.objects.select_related().all().order_by('-id')
     return render(request,
         'twitter/index.html',
