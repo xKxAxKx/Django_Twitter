@@ -6,6 +6,7 @@ from accounts.forms import SignupForm, UserEditForm
 from django.contrib.auth.models import User
 from twitter.models import Tweet, Favorite
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 

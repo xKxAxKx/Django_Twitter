@@ -14,3 +14,25 @@
 {% else %}
     <p>まだ何もありません</p>
 {% endif %}
+
+<ul class="pagination">
+    {% if tweets.has_previous %}
+        <li><a href="?page={{ tweets.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+        <li class="disabled"><a href="#">&laquo;</a></li>
+    {% endif %}
+
+    {% for linkpage in tweets.paginator.page_range %}
+        {% ifequal linkpage tweets.number %}
+            <li  class="active"><a href="#">{{ linkpage }}</a></li>
+        {% else %}
+            <li><a href="?page={{ linkpage }}">{{ linkpage }}</a></li>
+        {% endifequal %}
+    {% endfor %}
+
+    {% if tweets.has_next %}
+        <li><a href="?page={{ tweets.next_page_number }}">&raquo;</a></li>
+    {% else %}
+        <li class="disabled"><a href="#">&raquo;</a></li>
+    {% endif %}
+</ul>
