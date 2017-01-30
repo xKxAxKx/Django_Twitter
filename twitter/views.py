@@ -39,6 +39,11 @@ def index(request):
 
 
 @login_required
+def reqly(request, tweet_id):
+    Tweet = get_object_or_404(Twitter, pk=tweet_id)
+
+
+@login_required
 def twi_delete(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk=tweet_id)
     tweet.delete()
