@@ -1,3 +1,10 @@
+<script>
+$(function() {
+  $('.tweet_reply').on('click', function () {
+     $("#reply_pk").text($(this).attr("pk"));
+  });
+});
+</script>
 {% if tweets %}
     {% for tweet in tweets %}
           <div class="panel panel-primary">
@@ -5,6 +12,7 @@
                 @<a href="{% url 'accounts:profile' user_id=tweet.user_id_id %}">{{ tweet.user_id }}</a>&nbsp;&nbsp;{{ tweet.created_at }}<br>
                 {{ tweet.content }}<br>
                 <a
+                  class="tweet_reply"
                   data-toggle="modal"
                   data-target="#replyModal"
                   pk="{{ tweet.id }}"
@@ -51,7 +59,7 @@
       </div>
       <div class="modal-body">
         <div class="panel panel-primary">
-          <p>test</p>
+          <p><span id="reply_pk"></span></p>
         </div>
       </div>
       <div class="modal-footer">
