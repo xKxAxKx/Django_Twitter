@@ -1,7 +1,9 @@
 <script>
 $(function() {
   $('.tweet_reply').on('click', function () {
-     $("#reply_pk").text($(this).attr("pk"));
+     $("#reply_content").text($(this).attr("content"));
+     $("#reply_user").text($(this).attr("user"));
+     $("#tweet_created_at").text($(this).attr("created_at"));
   });
 });
 </script>
@@ -15,7 +17,11 @@ $(function() {
                   class="tweet_reply"
                   data-toggle="modal"
                   data-target="#replyModal"
-                  pk="{{ tweet.id }}"
+                  id="{{ tweet.id }}"
+                  content="{{ tweet.content }}"
+                  user="{{ tweet.user_id }}"
+                  user_id="{{ tweet.user_id_id }}"
+                  created_at="{{ tweet.created_at }}"
                   href="{% url 'twitter:reply' tweet_id=tweet.id %}">返信する</a>&nbsp;
                 {% if tweet.user_id_id == user.id %}
                 <a href="{% url 'twitter:twi_delete' tweet_id=tweet.id %}">削除する</a>
@@ -59,7 +65,12 @@ $(function() {
       </div>
       <div class="modal-body">
         <div class="panel panel-primary">
-          <p><span id="reply_pk"></span></p>
+            <div class="panel-body">
+                @<a href="#"><span id="reply_user"></span></a>
+                &nbsp;&nbsp;
+                <span id="tweet_created_at"></span><br>
+                <span id="reply_content"></span>
+            </div>
         </div>
       </div>
       <div class="modal-footer">
