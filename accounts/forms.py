@@ -16,6 +16,12 @@ class SignupForm(UserCreationForm):
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email and User.objects.filter(email=email).count():
+            raise forms.ValidationError(u'すでに登録済みのメールアドレスです')
+        return email
+
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
