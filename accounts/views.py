@@ -9,26 +9,25 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 
-
 def signup(request):
-    form = SignupForm(request.POST or None)
-    context = {
-        'form': form,
-    }
-    return render(request, 'accounts/signup.html', context)
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'ユーザを作成しました')
+            return redirect('/accounts/login')
+        else:
+            context = {
+                'form': form,
+            }
+            return render(request, 'accounts/signup.html', context)
+    else:
+        form = SignupForm(request.POST or None)
+        context = {
+            'form': form,
+        }
+        return render(request, 'accounts/signup.html', context)
 
-
-@require_POST
-def signup_save(request):
-    form = SignupForm(request.POST)
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'ユーザを作成しました')
-        return redirect('/accounts/login')
-    context = {
-        'form': form,
-    }
-    return render(request, 'accounts/signup.html', context)
 
 
 @login_required

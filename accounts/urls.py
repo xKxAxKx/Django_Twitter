@@ -11,7 +11,6 @@ urlpatterns = [
         {'template_name': 'accounts/logged_out.html'},
         name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
-    url(r'^signup_save/$', views.signup_save, name='signup_save'),
     url(r'^profile/(?P<user_id>\d+)/$', views.profile, name='profile'),
     url(r'^edit/$', views.edit, name='edit'),
 ]
