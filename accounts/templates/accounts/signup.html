@@ -20,6 +20,11 @@ table {
         {{ form.username.errors }}
     </div>
     <div class="form-group">
+        <label for="email">メールアドレス</label>
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+    <div class="form-group">
         <label for="id_password1">パスワード</label>
         {{ form.password1 }}
         {{ form.password1.errors }}
