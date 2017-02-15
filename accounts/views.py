@@ -7,13 +7,23 @@ from django.contrib.auth.models import User
 from twitter.models import Tweet, Favorite
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.core.mail import send_mail, EmailMessage
+from django_twitter import settings
 
 
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
+        # return HttpResponse(request.POST['email'])
         if form.is_valid():
             form.save()
+            #メールの送信(他の処理に分けた方が良いかも???)
+            subject = "twitterユーザ作成メール"
+            message = "ユーザを作成しました"
+            from_email = settings.EMAIL_HOST
+            recipient_list = [request.POST['email']]
+            send_mail(subject, message, from_email, recipient_list)
+
             messages.success(request, 'ユーザを作成しました')
             return redirect('/accounts/login')
         else:
