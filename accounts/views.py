@@ -17,13 +17,14 @@ def signup(request):
         # return HttpResponse(request.POST['email'])
         if form.is_valid():
             form.save()
-            #メールの送信(他の処理に分けた方が良いかも???)
+            # メールの送信(他の処理に分けた方が良いかも???)
             subject = "twitterユーザ作成メール"
             message = "ユーザを作成しました"
             from_email = settings.EMAIL_HOST
             recipient_list = [request.POST['email']]
             send_mail(subject, message, from_email, recipient_list)
-
+            # メールの送信ここまで
+            
             messages.success(request, 'ユーザを作成しました')
             return redirect('/accounts/login')
         else:
